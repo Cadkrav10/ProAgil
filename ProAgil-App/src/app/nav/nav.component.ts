@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 @Component({
   selector: 'app-nav',

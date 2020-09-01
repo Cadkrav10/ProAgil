@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ProAgil.API.Data;
-using ProAgil.API.Model;
+// using ProAgil.API.Data;
+// using ProAgil.API.Model;
+using ProAgil.Repository;
 
 namespace ProAgil.API.Controllers
 {
@@ -14,17 +15,14 @@ namespace ProAgil.API.Controllers
   [ApiController]
   public class ValuesController : ControllerBase
   {
-    public readonly DataContext _context;
-    public ValuesController(DataContext context)
+    public readonly ProAgilContext _context;
+    public ValuesController(ProAgilContext context)
       {
         _context = context;
       }
-    // GET api/values
+    
     [HttpGet]
-    //public ActionResult<IEnumerable<Evento>> Get()
-    // {
-    //   return _context.Eventos.ToList();
-    // }
+    
     public async Task<IActionResult> Get()
     {
         try
@@ -47,7 +45,7 @@ namespace ProAgil.API.Controllers
     {
       try
       {
-        var results = await _context.Eventos.FirstOrDefaultAsync(x => x.EventoId == id);
+        var results = await _context.Eventos.FirstOrDefaultAsync(x => x.Id == id);
 
         return Ok(results);
 
